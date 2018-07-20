@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="menu">
+    <a href="index.html"> <div class="app-profile">
+        <img src="images/logo.jpg" id="menu-logo">
+        <h2>Ride-My-Way</h2>
+   </div></a>
+<div class="menu-list">
+    <ul>
+        <li> <a href="user-profile.html">HOME</a></li>
+        <li> <a href="ride-offer-list.html">RIDE</a></li>
+        <li><a href="request-list.html">DRIVE</a></li>
+        <li><a href="contact-us.html">CONTACT US</a></li>
+        <li><a href="index.html">LOGOUT</a></li>
+    </ul>
+
+</div>
+    <div class="clear"></div>
+</div>
+
+    <div class="user-profile">
+        <strong>Welcome Martha Mareal</strong>
+        <div id="avatar">
+            <img src="images/avatar.png">
+
+            <div class="notification">
+            <span><i class="fa fa-bell" onclick="notification()"></i>  <i class="fa fa-circle" onclick="notification()"></i></span>
+
+                   <div id="notification">
+                       <div id="notification-head">
+                           <h4>Notifications</h4>
+                       </div>
+
+                       <div class="notification-msg">
+                           <span class="rejected-msg"><i class="fa fa-close"></i>   Dear mareal Collins rejected Your Ride Request RF0023   </span>
+                       </div>
+
+                       <div class="notification-msg">
+                           <span class="accepted-msg"><i class="fa fa-close"></i>   Dear mareal Keneth accepted Your Ride Request RF0024</span>
+                       </div>
+
+                       <div class="notification-msg">
+                           <span class="accepted-msg"><i class="fa fa-user"></i>   Dear mareal Rogers sent you a friend request <i class="fa fa-user-plus"></i>  <i class="fa fa-user-times"></i>  </span>
+                       </div>
+
+                       <div class="notification-msg">
+                           <span class="rejected-msg"><i class="fa fa-close"></i>   Dear mareal Keneth rejected Your Ride Request RF0026</span>
+                       </div>
+                        <div class="notification-msg">
+                           <span class="accepted-msg"><i class="fa fa-close"></i>   Dear mareal Henry accepted Your Ride Request RF0027   </span>
+                       </div>
+
+            </div>
+        </div>
+
+        </div>
+
+
+    </div>
+
+
+<div class="content-home">
+
+     <div class="rides" id="rides">
+
+        <div id="rides-header">
+              <div  class="all-rides" onclick="change_rides_view('all-rides','given','taken')">ALL RIDES (5) </div>
+
+                 <div class="given" onclick="change_rides_view('given','all-rides','taken')"> RIDES TAKEN (2)</div>
+
+                 <div class="taken" onclick="change_rides_view('taken','given','all-rides')"> RIDES GIVEN(3)</div>
+
+         </div>
+
+            <table id="all-rides">
+            <tr>
+                <th></th>
+                <th>DATE</th>
+                <th>REF NO</th>
+                <th>ACTION</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>22/02/2018</td>
+                <td>RF0001</td>
+                <td><a href="show-ride.html"><button id="cancel">View</button></a></td>
+            </tr>
+             <tr>
+                <td>2</td>
+                <td>12/07/2018</td>
+                <td>RF0005</td>
+                <td><a href="show-ride.html"><button id="request">View</button></a></td>
+            </tr>
+             <tr>
+                <td>3</td>
+                <td>2/04/2018</td>
+                <td>RF0008</td>
+               <td><a href="show-ride.html"><button id="cancel">View</button></a></td>
+            </tr>
+             <tr>
+                <td>4</td>
+                <td>23/03/2018</td>
+                <td>RF0010</td>
+                <td><a href="show-ride.html"><button id="request">View</button></a></td>
+            </tr>
+             <tr>
+                <td>5</td>
+                <td>14/09/2018</td>
+                <td>RF0034</td>
+                <td><a href="show-ride.html"><button id="cancel">View</button></a></td>
+            </tr>
+
+        </table>
+
+         <table id="given">
+            <tr>
+                <th></th>
+                <th>DATE</th>
+                <th>REF NO</th>
+                <th>ACTION</th>
+            </tr>
+
+             <tr>
+                <td>2</td>
+                <td>12/07/2018</td>
+                <td>RF0005</td>
+                <td><a href="show-ride.html"><button id="request">View</button></a></td>
+            </tr>
+             <tr>
+                <td>4</td>
+                <td>23/03/2018</td>
+                <td>RF0010</td>
+                <td><a href="show-ride.html"><button id="request">View</button></a></td>
+            </tr>
+
+
+        </table>
+
+
+
+         <table id="taken">
+            <tr>
+                <th></th>
+                <th>DATE</th>
+                <th>REF NO</th>
+                <th>ACTION</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>22/02/2018</td>
+                <td>RF0001</td>
+                <td><a href="show-ride.html"><button id="cancel">View</button></a></td>
+            </tr>
+
+             <tr>
+                <td>3</td>
+                <td>2/04/2018</td>
+                <td>RF0008</td>
+               <td><a href="show-ride.html"><button id="cancel">View</button></a></td>
+            </tr>
+
+             <tr>
+                <td>5</td>
+                <td>14/09/2018</td>
+                <td>RF0034</td>
+                <td><a href="show-ride.html"><button id="cancel">View</button></a></td>
+            </tr>
+
+        </table>
+
+        <div class="table-footer">
+       <button id="prev"><< Previous</button>&nbsp; <button id="next">Next >></button>
+    </div>
+
+    </div>
+
+     <div class="freinds">
+
+         <div id="freind-header">
+
+                 <div  id="hovered" onclick="freinds()" >FREINDS  </div>
+
+                 <div id="accounts" onclick="accounts()"> ACCOUNTS</div>
+
+         </div>
+
+       <!--User freinds area begins-->
+
+        <div id="freind-content">
+            <div class="freind">
+                <img src="images/avatar.png" id="freind-avatar">
+
+                <label>miria kats</label>
+            </div>
+             <div class="freind">
+                    <img src="images/me.jpg" id="freind-avatar">
+
+                    <label>Keneth</label>
+                </div>
+             <div class="freind">
+                    <img src="images/avatar.png" id="freind-avatar">
+
+                    <label>Henry Collins</label>
+                </div>
+             <div class="freind">
+                    <img src="images/me.jpg" id="freind-avatar">
+
+                    <label>Carlos Gacia</label>
+                </div>
+             <div class="freind">
+                    <img src="images/avatar.png" id="freind-avatar">
+
+                    <label>Johnson Raider</label>
+                </div>
+
+        </div>
+
+         <!--Acoounts area begins-->
+
+         <div id="accounts-content">
+            <div class="freind">
+                <img src="images/avatar.png" id="freind-avatar">
+
+                <label>Rogers<i class="fa fa-user-plus"></i></label>
+            </div>
+             <div class="freind">
+                    <img src="images/me.jpg" id="freind-avatar">
+
+                    <label>Reachel K<i class="fa fa-user-plus"></i></label>
+                </div>
+
+             <div class="freind">
+                    <img src="images/avatar.png" id="freind-avatar">
+
+                    <label>Henry Collins  <i class="fa fa-user-times"></i></label>
+                </div>
+
+             <div class="freind">
+                    <img src="images/avatar.png" id="freind-avatar">
+
+                    <label>Happy Harrison<i class="fa fa-user-plus"></i></label>
+                </div>
+
+             <div class="freind">
+                    <img src="images/me.jpg" id="freind-avatar">
+
+                    <label>Carlos Gacia <i class="fa fa-user-plus"></i></label>
+                </div>
+             <div class="freind">
+                    <img src="images/avatar.png" id="freind-avatar">
+
+                    <label>Johnson Raider <i class="fa fa-user-times"></i></label>
+                </div>
+
+        </div>
+         <div class="bottom-gif">
+             <img src="images/car.gif">
+         </div>
+
+
+
+    </div>
+
+
+</div>
+
+<script>
+    let hovered = document.getElementById("hovered");
+    let _accounts = document.getElementById("accounts");
+
+
+function notification() {
+
+   let div = document.getElementById("notification");
+    if(div.style.display === "none"){
+        document.getElementById("rides").style.width = "50%";
+       div.style.display = "block";
+    }
+    else if (div.style.display === "block") {
+            document.getElementById("rides").style.width= "75%";
+            div.style.display = "none";
+
+    }
+
+    else {
+        div.style.display = "none";
+    }
+
+}
+
+function change_rides_view(a,b,c) {
+
+    let x = document.getElementById(a);
+    let y = document.getElementById(b);
+    let z = document.getElementById(c);
+
+    if (x.style.display === "none"){
+        x.style.display = "table";
+        x.style.borderBottomColor = "green solid";
+        y.style.display = "none";
+        z.style.display = "none";
+
+    }
+    else if (a.style.display === "table") {
+        x.style.display = "table";
+        x.style.borderBottomColor = "green solid";
+        y.style.display = "none";
+        z.style.display = "none";
+    }
+
+}
+
+function accounts() {
+
+    let div = document.getElementById("accounts-content");
+
+
+
+    if(div.style.display === "none"){
+
+        document.getElementById("freind-content").style.display = "none";
+        hovered.style.borderBottom = "inherit";
+
+       div.style.display = "block";
+       _accounts.style.borderBottom = "green solid";
+    }
+     else if (div.style.display === "block") {
+
+        div.style.display = "block";
+        _accounts.style.borderBottom = "green solid";
+    }
+
+      else {
+         document.getElementById("freind-content").style.display = "block";
+         hovered.style.borderBottom = "green solid";
+
+        div.style.display = "none";
+        _accounts.style.borderBottom = "inherit";
+    }
+
+}
+
+function freinds() {
+
+
+    let div = document.getElementById("freind-content");
+
+
+    if(div.style.display === "none"){
+
+        document.getElementById("accounts-content").style.display = "none";
+        _accounts.style.borderBottom = "inherit";
+
+
+       div.style.display = "block";
+        hovered.style.borderBottom = "green solid";
+    }
+     else if (div.style.display === "block") {
+
+        div.style.display = "block";
+        hovered.style.borderBottom = "green solid";
+    }
+      else {
+         document.getElementById("accounts-content").style.display = "block";
+         _accounts.style.borderBottom = "green solid";
+
+        div.style.display = "none";
+        hovered.style.borderBottom = "inherit";
+    }
+
+}
+
+</script>
+</body>
+</html>
