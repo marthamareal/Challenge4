@@ -1,6 +1,8 @@
+
+let header = {'Content-Type': 'application/json'};
+
 function createUser(){
 
-    let header = {'Content-Type': 'application/json'};
     let fname = document.getElementById("fname").value;
     let lname = document.getElementById("lname").value;
     let email = document.getElementById("email").value;
@@ -26,12 +28,40 @@ function createUser(){
 
 
     fetch(url, {headers: header, method:'POST', body:JSON.stringify(newUser)})
-    .then((response)=> {
+    .then(function(response) {
         window.alert(response.status);
-        window.alert(JSON.stringify(response.body));
+        window.alert(response.body);
+        console.log(response.body);
 
     }).catch(function (error) {
         console.log("something happened",error)
     })
     
+}
+
+function loginUser() {
+
+    let url = "http://127.0.0.1:5000/auth/login";
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+     fetch(url,
+         {
+         headers: header,
+         method:'POST',
+         body:JSON.stringify(
+             {
+                 "email":email,
+                 "password":password
+             }
+             )})
+    .then(function(response) {
+        window.alert(response.status);
+        window.alert(response.body);
+        console.log(response.body);
+
+    }).catch(function (error) {
+        console.log("something happened",error)
+    })
+
 }
