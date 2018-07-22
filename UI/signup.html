@@ -5,6 +5,7 @@
 
      <link rel="stylesheet" href="css/style.css"/>
      <link rel="stylesheet" href="css/publicStyle.css"/>
+
     <title> Ride-My-App</title>
 </head>
 <body>
@@ -29,15 +30,6 @@
 
 <div class="index-content">
 
-    <div class="info">
-        <!--<div id="info-text"><center><h1>WELCOME</h1></center>-->
-             <!--<P>We give you the ability to Ride and Drive. </P>-->
-             <!--<P>Sign up and start Riding and Creating Rides You can drive!!!!</P>-->
-            <!--<center><a href="login.html"><button id="start-pub"><strong>RIDE|DRIVE NOW</strong></button></a></center>-->
-            <!--<br>-->
-        <!--</div>-->
-    </div>
-
 <div class="signup-login">
 
     <div id="form-head">
@@ -45,26 +37,24 @@
             <h3>Ride-My-Way</h3>
     </div>
 
-    <form action="login.html">
+    <form>
         <center><h4>Sign-Up To start Your Way!!</h4></center>
 
         <center>Already have an account? <a href="login.html">Login</a></center><br>
 
-        <input type="text" placeholder="First Name" required>
-        <input type="text" placeholder="Last Name" required>
-        <input type="email" placeholder="Email Address">
-        <input type="text" placeholder="Phone Number" required>
-        <input type="text" placeholder="City" required>
-        <input type="password" placeholder="Create Password" required>
+        <input type="text" id="fname" name="fname" placeholder="First Name" >
+        <input type="text" id="lname"  name="lname" placeholder="Last Name" >
+        <input type="email" id="email" name="email"  placeholder="Email Address">
+        <input type="text" id="phone" name="phone" placeholder="Phone Number" >
+        <input type="text" id="city" name="city" placeholder="City" >
+        <input type="password" id="password" name="password" placeholder="Create Password" >
 
-        <input type="submit" value="Sign Up"/>
+        <input type="submit" onclick="createUser()" value="Sign Up"/>
 
     </form>
 
 </div>
-
-
 </div>
-
+<script type="application/javascript" src="javascript/signup.js"></script>
 </body>
 </html>
