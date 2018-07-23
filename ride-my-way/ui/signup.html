@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+     <link rel="stylesheet" href="../css/style.css"/>
+     <link rel="stylesheet" href="../css/publicStyle.css"/>
+
+    <title> Ride-My-App</title>
+</head>
+<body>
+
+<div class="menu">
+   <a href="index.html"> <div class="app-profile">
+        <img src="../images/logo.jpg" id="menu-logo">
+        <h2>Ride-My-Way</h2>
+   </div></a>
+<div class="menu-list">
+    <ul>
+        <li> <a href="index.html">HOME</a></li>
+        <li> <a href="login.html">RIDE</a></li>
+        <li><a href="login.html">DRIVE</a></li>
+        <li><a href="#">ABOUT US</a></li>
+    </ul>
+
+</div>
+    <div class="clear"></div>
+</div>
+
+
+<div class="index-content">
+
+<div class="signup-login">
+
+    <div id="form-head">
+            <img src="../images/logo.jpg" id="logo"/>
+            <h3>Ride-My-Way</h3>
+    </div>
+
+    <form>
+        <center><h4>Sign-Up To start Your Way!!</h4></center>
+
+        <center>Already have an account? <a href="login.html">Login</a></center><br>
+
+        <input type="text" id="fname" name="fname" placeholder="First Name" pattern="^[a-zA-Z]{3,25}$"
+        autofocus required title="Enter at least 3 characters with no numbers and spaces in it">
+
+        <input type="text" id="lname"  name="lname" placeholder="Last Name" pattern="^[a-zA-Z]{3,25}$"
+        autofocus required title="Enter at least 3 characters with no numbers and spaces in it">
+
+        <input type="email" id="email" name="email"  placeholder="Email Address" autofocus required>
+
+        <input type="text" id="phone" name="phone" placeholder="Phone Number" pattern="^\+[0-9]{3}\s[0-9]{9,15}$"
+        autofocus required title="Enter a valid phone number eg +256 777777886">
+
+        <input type="text" id="city" name="city" placeholder="City" pattern="^[a-zA-Z0-9,-s]{3,45}"
+        required title="Enter at least 3 characters">
+
+        <input type="password" id="password" name="password" placeholder="Create Password" minlength="8"
+        required title="password length must be 8 ore more">
+
+        <input id="signup_form" type="submit" onclick="createUser()" value="Sign Up"/>
+
+    </form>
+
+</div>
+</div>
+<script type="application/javascript" src="../javascript/authentication.js"></script>
+</body>
+</html>
