@@ -1,5 +1,15 @@
+window.onload = function () {
+    let signupForm = document.getElementById('signup_form');
+    let loginForm = document.getElementById('login_form');
 
-function createUser(){
+    if(signupForm)
+        signupForm.onsubmit = createUser;
+    if(loginForm)
+        loginForm.onsubmit = loginUser;
+};
+
+function createUser(event) {
+    event.preventDefault();
 
     let fname = document.getElementById("fname").value;
     let lname = document.getElementById("lname").value;
@@ -9,81 +19,60 @@ function createUser(){
     let password = document.getElementById("password").value;
 
     let newUser = {
-                "first name":fname,
-                "last name": lname,
-                "email": email,
-                "city": city,
-                "phone_no": phone,
-                "password": password
-            };
+        "first name": fname,
+        "last name": lname,
+        "email": email,
+        "city": city,
+        "phone_no": phone,
+        "password": password
+    };
+    // let url = "https://ride-my-way-api-database.herokuapp.com/auth/signup";
 
     let url = "http://127.0.0.1:5000/auth/signup";
+    let method = 'post';
+    let header = {'Content-Type': 'application/json'};
 
-     if(!('fetch' in window)){
-         console.log("API not found")
-     }
-     
+    fetchAPI(url, method,header, newUser)
+        .then(results => {
 
-
-    fetch(url, {headers: {'Content-Type': 'application/json'}, method:'POST', body:JSON.stringify(newUser)})
-
-    .then((response) =>{
-
-        if(response.status === 201){
-             alert("Account created successfully");
+            if (results.status === 201) {
+                    window.location.href = '../ui/login.html';
+                    alert("Account created successfully login with your details")
+                }
         }
-        else {
-           return response.json()
-            // window.location.replace("../login.html")
-        }
+    ).catch(function(error){
+        console.log(error)
+    })
 
-    }).then(response =>{
-        alert(response.message);
-        console.log(response.message);
-    })
-        .catch(function (error) {
-        console.log("something happened",error)
-    })
-    
 }
 
-function loginUser() {
+function loginUser(event) {
 
+    event.preventDefault();
+    // let url = "https://ride-my-way-api-database.herokuapp.com/auth/login";
     let url = "http://127.0.0.1:5000/auth/login";
 
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
 
-     if(!('fetch' in window)){
-         console.log("API not found")
-     }
+    let logins = {
+        "email": email,
+        "password": password
+    };
 
-     fetch(url,
-         {
-         headers: {'Content-Type': 'application/json'},
-         method:'POST',
-         body:JSON.stringify(
-             {
-                 "email":email,
-                 "password":password
-             }
-             )})
-         .then((response)=>{
-             if(response.status === 200){
-                 return response.json()
-             }
-             else if (response.status === 401) {
-                 window.alert("Email and Password don't match");
-                 return response.json()
-             }
-         })
-        .then(response => {
-            sessionStorage.setItem('token', response.token);
-            alert(response.status);
-            alert(sessionStorage.getItem('token'));
+    let headers = {'Content-Type': 'application/json'};
+    let method = 'post';
 
-        }).catch(function (error) {
-            console.log("something happened",error.message)
+    fetchAPI(url, method, headers, logins)
+        .then(results => {
+            if(!results) return;
+            if (results.status === 200 && results.data.token) {
+            localStorage.setItem('token', results.data.token);
+            console.log(results.data.token);
+            window.location.href = "../ui/user-profile.html"
+        }
+
         })
-
 }
+
+

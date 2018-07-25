@@ -37,7 +37,7 @@
             <h3>Ride-My-Way</h3>
     </div>
 
-    <form>
+    <form id="login_form">
         <center><h4>Login</h4></center>
         <label>Email Address:</label>
         <input type="email" id="email" name="email"  placeholder="Email Address" autofocus required>
@@ -45,15 +45,15 @@
         <input type="password" id="password" name="password" placeholder="Create Password" minlength="8"
         required title="password length must be 8 ore more">
 
-        <input type="submit" id="login_form" onclick="loginUser()" value="Login"/>
+        <input type="submit" id="login" value="Login"/>
 
     </form>
       <center>Don't have an account? <a href="signup.html">SignUp</a></center><br>
 
 </div>
 
-
 </div>
-
+<script type="text/javascript" src="../javascript/main.js"></script>
+<script type="text/javascript" src="../javascript/authentication.js"></script>
 </body>
 </html>
