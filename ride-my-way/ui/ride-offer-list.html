@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/style.css"/>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body id="protected_ui">
 <div class="menu">
     <a href="index.html"> <div class="app-profile">
         <img src="../images/logo.jpg" id="menu-logo">
@@ -18,14 +18,14 @@
         <li> <a href="ride-offer-list.html">RIDE</a></li>
         <li><a href="request-list.html">DRIVE</a></li>
         <li><a href="contact-us.html">CONTACT US</a></li>
-        <li><a href="index.html">LOGOUT</a></li>
+        <li><a id="logout">LOGOUT</a></li>
     </ul>
 
 </div>
     <div class="clear"></div>
 </div>
 
-<div class="content">
+<div class="content" id="ride_offers">
 
     <div class="sub-menu">
     <h4>AVAILABLE RIDE OFFERS</h4>
@@ -41,46 +41,14 @@
         <th>DRIVER</th>
         <th>ACTION</th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>22/02/2018</td>
-        <td>RF0001</td>
-        <td>Keneth</td>
-         <td><a href="show-ride.html"><button id="request">View</button></a></td>
-    </tr>
-     <tr>
-        <td>2</td>
-        <td>12/07/2018</td>
-        <td>RF0005</td>
-        <td>Rogers</td>
-         <td><a href="show-ride.html"><button id="request">View</button></a></td>
-    </tr>
-     <tr>
-        <td>3</td>
-        <td>2/04/2018</td>
-        <td>RF0008</td>
-        <td>Henry Collins</td>
-         <td><a href="show-ride.html"><button id="request">View</button></a></td>
-    </tr>
-     <tr>
-        <td>4</td>
-        <td>23/03/2018</td>
-        <td>RF0010</td>
-        <td>Carlos Gacia</td>
-         <td><a href="show-ride.html"><button id="request">View</button></a></td>
-    </tr>
-     <tr>
-        <td>5</td>
-        <td>14/09/2018</td>
-        <td>RF0034</td>
-        <td>Johnson Raider</td>
-         <td><a href="show-ride.html"><button id="request">View</button></a></td>
-    </tr>
 
 </table>
     <div class="table-footer">
-       <button id="prev"><< Previous</button>&nbsp; <button id="next">Next >></button>
+       <button id="prev"><< Previous</button>&nbsp;<button id="next">Next >></button>
     </div>
 </div>
+<script type="text/javascript" src="../javascript/main.js"></script>
+<script type="application/javascript" src="../javascript/authentication.js"></script>
+<script type="application/javascript" src="../javascript/rides.js"></script>
 </body>
 </html>

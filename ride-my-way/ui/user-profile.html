@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/style.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body id="protected_ui">
 <div class="menu">
     <a href="index.html"> <div class="app-profile">
         <img src="../images/logo.jpg" id="menu-logo">
@@ -18,7 +18,7 @@
         <li> <a href="ride-offer-list.html">RIDE</a></li>
         <li><a href="request-list.html">DRIVE</a></li>
         <li><a href="contact-us.html">CONTACT US</a></li>
-        <li><a href="index.html">LOGOUT</a></li>
+        <li><a id="logout">LOGOUT</a></li>
     </ul>
 
 </div>
@@ -378,5 +378,9 @@ function freinds() {
 }
 
 </script>
+
+<script type="text/javascript" src="../javascript/main.js"></script>
+<script type="application/javascript" src="../javascript/authentication.js"></script>
+
 </body>
 </html>
