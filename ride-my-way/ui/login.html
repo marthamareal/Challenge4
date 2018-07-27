@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>login</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div class="menu">
   <a href="index.html"> <div class="app-profile">
-        <img src="images/logo.jpg" id="menu-logo">
+        <img src="../images/logo.jpg" id="menu-logo">
         <h2>Ride-My-Way</h2>
    </div></a>
 <div class="menu-list">
@@ -16,7 +16,8 @@
         <li> <a href="index.html">HOME</a></li>
         <li> <a href="login.html">RIDE</a></li>
         <li><a href="login.html">DRIVE</a></li>
-        <li><a href="#">ABOUT US</a></li>
+        <li><a href="contact-us.html">CONTACT US</a></li>
+        <li><a href="about-us.html">ABOUT US</a></li>
     </ul>
 
 </div>
@@ -25,22 +26,25 @@
 <div class="signup-login login">
 
     <div id="form-head">
-            <img src="images/logo.jpg" id="logo"/>
+            <img src="../images/logo.jpg" id="logo"/>
             <h3>Ride-My-Way</h3>
     </div>
 
-    <form action="user-profile.html">
+    <form id="login_form">
         <center><h4>Login</h4></center>
         <center>Don't have an account? <a href="signup.html">SignUp</a></center><br>
         <label>Email Address:</label>
-        <input type="email" placeholder="youremail@gmail.com"/>
-        <label>Password:</label>
-        <input type="password" placeholder="password" required/>
+        <input type="email" id="email" name="email"  placeholder="Email Address" autofocus required>
 
+        <label>Password:</label>
+        <input type="password" id="password" name="password" placeholder="Create Password" minlength="8"
+        required title="password length must be 8 ore more">
         <input type="submit" value="Login"/>
 
     </form>
 
 </div>
+<script type="text/javascript" src="../javascript/main.js"></script>
+<script type="application/javascript" src="../javascript/authentication.js"></script>
 </body>
 </html>
