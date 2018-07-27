@@ -3,6 +3,13 @@ body{
     margin: 0;
     height: 100vh;
 }
+h1{
+    font-size: x-large;
+    color: green;
+    padding: 15px;
+    margin-left: 50px;
+
+}
 .index-content{
     display: flex;
     height: 74%;
