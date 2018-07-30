@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Request | List</title>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>My Offers | List</title>
     <link rel="stylesheet" href="../css/style.css"/>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body id="protected_ui">
-
 <div class="menu">
     <a href="index.html"> <div class="app-profile">
         <img src="../images/logo.jpg" id="menu-logo">
@@ -26,20 +25,32 @@
     <div class="clear"></div>
 </div>
 
-<div class="content">
+<div class="content" id="driver_offers">
 
     <div class="sub-menu">
-    <h4>RIDER REQUESTS LIST</h4>
-         <a href="create-ride.html"> <button><i class="fa fa-plus"></i>&nbsp;&nbsp;New Ride</button> </a>
+    <h4>MY RIDE OFFERS</h4>
+
+        <a href="create-ride.html"> <button><i class="fa fa-plus"></i>&nbsp;&nbsp;New Ride</button> </a>
     </div>
-<div id="ride_requests">
 
+<table>
+    <thead>
+        <th></th>
+        <th>DATE</th>
+        <th>SOURCE</th>
+        <th>DESTINATION</th>
+        <th>TIME</th>
+        <th>REQUESTS</th>
+        <th>ACTION</th>
+    </thead>
 
-</div>
+    <tbody id="my_offers">
 
+    </tbody>
 
-<div class="table-footer">
-       <button id="prev"><< Previous</button>&nbsp; <button id="next">Next >></button>
+</table>
+    <div class="table-footer">
+       <button id="prev"><< Previous</button>&nbsp;<button id="next">Next >></button>
     </div>
 </div>
 <script type="text/javascript" src="../javascript/main.js"></script>
