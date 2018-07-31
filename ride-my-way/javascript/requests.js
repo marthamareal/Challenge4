@@ -67,7 +67,9 @@ function getRideRequests(rideId, event) {
                     button1.setAttribute("value", wantedFields[wantedFields.length - 1]);
                     button1.setAttribute("action", "Y");
                     button1.innerText = "Accept";
-                    button1.setAttribute("class", "approve_request");
+                    button1.addEventListener("click", function () {
+                        approveRequest(this.value,this.action, event)
+                    });
                     action.appendChild(button1);
 
 
@@ -75,7 +77,9 @@ function getRideRequests(rideId, event) {
                     button2.setAttribute("id", "reject");
                     button2.setAttribute("value",  wantedFields[wantedFields.length - 1]);
                     button2.setAttribute("action", "N");
-                    button2.setAttribute("class", "approvedff_request");
+                    button2.addEventListener("click", function () {
+                        approveRequest(this.value, this.action, event);
+                    });
                     button2.innerText = "Reject";
                     action.appendChild(button2);
 
@@ -121,13 +125,35 @@ function approveRequest(requestId,approval, event) {
 
 }
 
-let button = document.getElementsByClassName("approve_request")[0];
-if(button){
-    console.log("okkkkkkkkkkkkkkkkkkkkkkkkk");
-    button.addEventListener("click", function () {
-        approveRequest(button.getAttribute("value"), button.getAttribute("action"))
-    })
+function requestRide(offerId, event) {
+    event.preventDefault();
 
+    if (offerId) {
+        if (localStorage.getItem('token')) {
+            let url = "http://127.0.0.1:5000/rides/requests/create/" + offerId;
+            console.log(url);
+            let method = 'get';
+            let header = {
+                'Content-Type': 'application/json',
+                'token': localStorage.getItem('token')
+            };
+
+            fetchAPI(url, method, header)
+                .then(results => {
+                    if (!results) return;
+
+                    if (results.status === 201) {
+                     window.location.href = "../ui/user-profile.html";
+                    alert("Request made successfully");
+                }
+
+                }).catch(function (error) {
+                console.log(error)
+            });
+
+        }
+
+    }
 }
 
 

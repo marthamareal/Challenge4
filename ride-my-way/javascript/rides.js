@@ -1,4 +1,3 @@
-
 function getOffers() {
     if (localStorage.getItem('token')) {
         let url = "http://127.0.0.1:5000/rides";
@@ -160,14 +159,13 @@ function viewOffer(offerId, event) {
                     divShowingRide.appendChild(br);
 
 
-
                     let center = document.createElement('center');
 
                     let p = document.createElement('p');
                     p.appendChild(document.createTextNode("Price:"));
 
-                     let lb1 = document.createElement('label');
-                     let str = document.createElement('strong');
+                    let lb1 = document.createElement('label');
+                    let str = document.createElement('strong');
 
                     str.appendChild(document.createTextNode(ride['price']));
 
@@ -182,20 +180,24 @@ function viewOffer(offerId, event) {
                     center.appendChild(br1);
                     divShowingRide.appendChild(center);
 
-                     let center1 = document.createElement('center');
+                    let center1 = document.createElement('center');
 
                     let a = document.createElement('a');
-                    a.setAttribute("href", "../ui/user-profile.html");
+                    // a.setAttribute("href", "../ui/user-profile.html");
                     let button1 = document.createElement('button');
-                    button1.setAttribute("id","accept");
+                    button1.setAttribute("id", "accept");
+                    button1.setAttribute("value", offerId);
+                    button1.onclick = function (rideId = this.value,event) {
+                        requestRide(rideId, event)
+                    };
                     button1.innerText = "Request to Join";
                     a.appendChild(button1);
                     center1.appendChild(a);
 
-                     let a1 = document.createElement('a');
+                    let a1 = document.createElement('a');
                     a1.setAttribute("href", "../ui/ride-offer-list.html");
                     let button2 = document.createElement('button');
-                    button2.setAttribute("id","reject");
+                    button2.setAttribute("id", "reject");
                     button2.innerText = "Back to offers";
                     a1.appendChild(button2);
 
@@ -205,9 +207,6 @@ function viewOffer(offerId, event) {
 
                     let br2 = document.createElement('br');
                     divShowingRide.appendChild(br2);
-
-                    let br3 = document.createElement('br');
-                    divShowingRide.appendChild(br3);
 
                     localStorage.setItem('divShowingRide', divShowingRide.outerHTML);
 
@@ -269,9 +268,6 @@ function getDriverOffers() {
                     button.setAttribute("id", "accept");
                     button.setAttribute("value", wantedFields[wantedFields.length - 1]);
                     button.addEventListener("click", function () {
-                        console.log(this.value);
-                        // history.pushState({"offerId": this.value}, "Requests","../ui/request-list.html");
-
                         getRideRequests(this.value, event)
                     });
                     button.innerText = "View Requests";
@@ -286,9 +282,58 @@ function getDriverOffers() {
     }
 }
 
+function createOffer(event) {
+
+    event.preventDefault();
+
+    let date = document.getElementById("date").value;
+    let time = document.getElementById("time").value;
+    let source = document.getElementById("source").value;
+    let destination = document.getElementById("destination").value;
+    let price = document.getElementById("price").value;
+
+    let newRide =
+        {
+            "date": date,
+            "time": time,
+            "source": source,
+            "destination": destination,
+            "price": price
+
+        };
+
+    // let url = "https://ride-my-way-api-database.herokuapp.com/auth/signup";
+
+    let url = "http://127.0.0.1:5000/rides/create";
+    let method = 'post';
+    let header = {
+        'Content-Type': 'application/json',
+        'token': localStorage.getItem('token')
+    };
+    console.log(newRide);
+
+    fetchAPI(url, method, header, newRide)
+        .then(results => {
+                if (results.status === 201) {
+                    window.location.href = '../ui/driver-offers.html';
+                    alert("Ride created successfully");
+                }
+            }
+        ).catch(function (error) {
+        console.log(error)
+    })
+}
+
+
+
+
 if (document.getElementById('ride_offers')) getOffers();
 
 if (document.getElementById('driver_offers')) getDriverOffers();
+
+let create_ride_form = document.getElementById('create_ride_form');
+if (create_ride_form)
+    create_ride_form.onsubmit = createOffer;
 
 let outerDivShowingRide = document.getElementById('show-ride-details');
 if (outerDivShowingRide)
