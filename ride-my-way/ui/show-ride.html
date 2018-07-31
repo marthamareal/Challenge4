@@ -33,35 +33,16 @@
         <img src="../images/avatar.png">
 
         <div class="notification">
-            <span><i class="fa fa-bell" onclick="notification()"></i>  <i class="fa fa-circle"
-                                                                          onclick="notification()"></i></span>
+            <span>
+                <i class="fa fa-bell" onclick="notification()"></i>
+                <i class="fa fa-circle" onclick="notification()"></i>
+            </span>
 
             <div id="notification">
-                <div id="notification-head">
-                    <h4>Notifications</h4>
-                </div>
 
-                <div class="notification-msg">
-                    <span class="rejected-msg"><i class="fa fa-close"></i>   Dear mareal Collins rejected Your Ride Request RF0023   </span>
-                </div>
-
-                <div class="notification-msg">
-                    <span class="accepted-msg"><i class="fa fa-close"></i>   Dear mareal Keneth accepted Your Ride Request RF0024</span>
-                </div>
-
-                <div class="notification-msg">
-                    <span class="accepted-msg"><i class="fa fa-user"></i>   Dear mareal Rogers sent you a friend request <i
-                            class="fa fa-user-plus"></i>  <i class="fa fa-user-times"></i>  </span>
-                </div>
-
-                <div class="notification-msg">
-                    <span class="rejected-msg"><i class="fa fa-close"></i>   Dear mareal Keneth rejected Your Ride Request RF0026</span>
-                </div>
-                <div class="notification-msg">
-                    <span class="accepted-msg"><i class="fa fa-close"></i>   Dear mareal Henry accepted Your Ride Request RF0027   </span>
-                </div>
 
             </div>
+
         </div>
 
     </div>
@@ -75,29 +56,10 @@
 
 </div>
 
-
-<script>
-
-    function notification() {
-
-        let div = document.getElementById("notification");
-        if (div.style.display === "none") {
-            div.style.display = "block";
-        }
-        else if (div.style.display === "block") {
-            div.style.display = "none";
-
-        }
-
-        else {
-            div.style.display = "none";
-        }
-
-    }
-</script>
 <script type="text/javascript" src="../javascript/main.js"></script>
 <script type="application/javascript" src="../javascript/authentication.js"></script>
 <script type="application/javascript" src="../javascript/rides.js"></script>
 <script type="application/javascript" src="../javascript/requests.js"></script>
+<script type="application/javascript" src="../javascript/notifications.js"></script>
 </body>
 </html>
