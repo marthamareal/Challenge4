@@ -1,4 +1,16 @@
 
+window.onload = function () {
+
+    let signupForm = document.getElementById('signup_form');
+    let loginForm = document.getElementById('login_form');
+
+    if(signupForm)
+        signupForm.onsubmit = createUser;
+    if(loginForm)
+        loginForm.onsubmit = loginUser;
+};
+
+
 function createUser(event) {
     event.preventDefault();
 
@@ -65,20 +77,5 @@ function loginUser(event) {
         })
 }
 
-function logoutUser(event) {
-    event.preventDefault();
-    let url = "http://127.0.0.1:5000/auth/logout";
-    let headers = {'Content-Type': 'application/json', 'token':localStorage.getItem('token')};
-    let method = 'get';
-
-    fetchAPI(url, method, headers)
-        .then(results =>{
-            if (!results) return;
-            if (results.status ===200){
-                localStorage.clear();
-                window.location.href = "../ui/index.html"
-            }
-        })
-}
 
 

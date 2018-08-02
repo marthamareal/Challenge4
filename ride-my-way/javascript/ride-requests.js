@@ -1,8 +1,10 @@
+window.onload = function () {
+let parsedUrl = new URL(window.location.href);
+let rideId = parsedUrl.searchParams.get('ride');
+ getRideRequests(rideId)
 
-function getRideRequests(rideId, event) {
-    event.preventDefault();
-
-    if(rideId) {
+};
+function getRideRequests(rideId) {
         let url = " http://127.0.0.1:5000/rides/requests/" + rideId;
         let method = 'get';
         let header = {
@@ -18,6 +20,8 @@ function getRideRequests(rideId, event) {
 
                 console.log(results);
 
+                let div = document.querySelector('#ride_requests');
+
                 let table =  document.createElement('table');
 
                 let theadRow = document.createElement('tr');
@@ -32,7 +36,6 @@ function getRideRequests(rideId, event) {
                 }
 
                 table.appendChild(theadRow);
-
 
                 let tbody = document.createElement("tbody");
 
@@ -67,9 +70,9 @@ function getRideRequests(rideId, event) {
                     button1.setAttribute("value", wantedFields[wantedFields.length - 1]);
                     button1.setAttribute("action", "Y");
                     button1.innerText = "Accept";
-                    button1.addEventListener("click", function () {
-                        approveRequest(this.value,this.action, event)
-                    });
+                    button1.onclick = function(requestId=this.id, approval=this.action){
+                        approveRequest(requestId,approval)
+                    };
                     action.appendChild(button1);
 
 
@@ -77,9 +80,9 @@ function getRideRequests(rideId, event) {
                     button2.setAttribute("id", "reject");
                     button2.setAttribute("value",  wantedFields[wantedFields.length - 1]);
                     button2.setAttribute("action", "N");
-                    button2.addEventListener("click", function () {
-                        approveRequest(this.value, this.action, event);
-                    });
+                    button2.onclick = function(requestId=this.value, approval=this.action){
+                        approveRequest(requestId,approval)
+                    };
                     button2.innerText = "Reject";
                     action.appendChild(button2);
 
@@ -88,25 +91,20 @@ function getRideRequests(rideId, event) {
                     tbody.appendChild(row);
 
                     table.appendChild(tbody);
-
-                    localStorage.setItem('rideRequests', table.outerHTML);
-
-                    window.location.href = "../ui/request-list.html";
+                    div.appendChild(table)
 
                 });
             }).catch(function (error) {
             console.log(error)
         })
-    }
+
 }
 
-function approveRequest(requestId,approval, event) {
-
-    event.preventDefault();
+function approveRequest(requestId,approval) {
 
     let url = " http://127.0.0.1:5000/rides/requests/approve/" + requestId;
-
-    console.log(url);
+    console.log(requestId);
+    console.log(approval);
         let method = 'post';
         let header = {
             'Content-Type': 'application/json',
@@ -124,39 +122,3 @@ function approveRequest(requestId,approval, event) {
 
 
 }
-
-function requestRide(offerId, event) {
-    event.preventDefault();
-
-    if (offerId) {
-        if (localStorage.getItem('token')) {
-            let url = "http://127.0.0.1:5000/rides/requests/create/" + offerId;
-            console.log(url);
-            let method = 'get';
-            let header = {
-                'Content-Type': 'application/json',
-                'token': localStorage.getItem('token')
-            };
-
-            fetchAPI(url, method, header)
-                .then(results => {
-                    if (!results) return;
-
-                    if (results.status === 201) {
-                     window.location.href = "../ui/user-profile.html";
-                    alert("Request made successfully");
-                }
-
-                }).catch(function (error) {
-                console.log(error)
-            });
-
-        }
-
-    }
-}
-
-
-let outerDivShowRideRequests = document.getElementById('ride_requests');
-if (outerDivShowRideRequests)
-    outerDivShowRideRequests.innerHTML = localStorage.getItem('rideRequests');
