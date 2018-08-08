@@ -5,7 +5,7 @@ let rideId = parsedUrl.searchParams.get('ride');
 
 };
 function getRideRequests(rideId) {
-        let url = " http://127.0.0.1:5000/rides/requests/" + rideId;
+        let url = "https://ride-my-way-api-database.herokuapp.com/rides/requests/" + rideId;
         let method = 'get';
         let header = {
             'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ function getRideRequests(rideId) {
 
 function approveRequest(requestId,approval) {
 
-    let url = " http://127.0.0.1:5000/rides/requests/approve/" + requestId;
+    let url = "https://ride-my-way-api-database.herokuapp.com/rides/requests/approve/" + requestId;
     console.log(requestId);
     console.log(approval);
         let method = 'post';

@@ -24,9 +24,7 @@ function createOffer() {
 
         };
 
-    // let url = "https://ride-my-way-api-database.herokuapp.com/auth/signup";
-
-    let url = "http://127.0.0.1:5000/rides/create";
+    let url = "https://ride-my-way-api-database.herokuapp.com/rides/create";
     let method = 'post';
     let header = {
         'Content-Type': 'application/json',

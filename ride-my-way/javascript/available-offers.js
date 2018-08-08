@@ -6,7 +6,7 @@ window.onload = function () {
 function getOffers() {
 
     if (localStorage.getItem('token')) {
-        let url = "http://127.0.0.1:5000/rides";
+        let url = "https://ride-my-way-api-database.herokuapp.com/rides";
         let method = 'get';
         let header = {
             'Content-Type': 'application/json',

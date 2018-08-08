@@ -10,7 +10,7 @@ viewOffer(rideId)
 
 function viewOffer(offerId) {
         if (localStorage.getItem('token')) {
-            let url = "http://127.0.0.1:5000/rides/" + offerId;
+            let url = "https://ride-my-way-api-database.herokuapp.com/rides/" + offerId;
             console.log(url);
             let method = 'get';
             let header = {
@@ -164,7 +164,7 @@ function viewOffer(offerId) {
 
 function requestRide(offerId) {
         if (localStorage.getItem('token')) {
-            let url = "http://127.0.0.1:5000/rides/requests/create/" + offerId;
+            let url = "https://ride-my-way-api-database.herokuapp.com/rides/requests/create/" + offerId;
             console.log(url);
             let method = 'get';
             let header = {
