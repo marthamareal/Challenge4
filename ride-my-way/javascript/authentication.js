@@ -1,4 +1,16 @@
 
+window.onload = function () {
+
+    let signupForm = document.getElementById('signup_form');
+    let loginForm = document.getElementById('login_form');
+
+    if(signupForm)
+        signupForm.onsubmit = createUser;
+    if(loginForm)
+        loginForm.onsubmit = loginUser;
+};
+
+
 function createUser(event) {
     event.preventDefault();
 
@@ -17,9 +29,7 @@ function createUser(event) {
         "phone_no": phone,
         "password": password
     };
-    // let url = "https://ride-my-way-api-database.herokuapp.com/auth/signup";
-
-    let url = "http://127.0.0.1:5000/auth/signup";
+    let url = "https://ride-my-way-api-database.herokuapp.com/auth/signup";
     let method = 'post';
     let header = {'Content-Type': 'application/json'};
 
@@ -40,8 +50,7 @@ function createUser(event) {
 function loginUser(event) {
 
     event.preventDefault();
-    // let url = "https://ride-my-way-api-database.herokuapp.com/auth/login";
-    let url = "http://127.0.0.1:5000/auth/login";
+    let url = "https://ride-my-way-api-database.herokuapp.com/auth/login";
 
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
@@ -65,20 +74,5 @@ function loginUser(event) {
         })
 }
 
-function logoutUser(event) {
-    event.preventDefault();
-    let url = "http://127.0.0.1:5000/auth/logout";
-    let headers = {'Content-Type': 'application/json', 'token':localStorage.getItem('token')};
-    let method = 'get';
-
-    fetchAPI(url, method, headers)
-        .then(results =>{
-            if (!results) return;
-            if (results.status ===200){
-                localStorage.clear();
-                window.location.href = "../ui/index.html"
-            }
-        })
-}
 
 
