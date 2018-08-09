@@ -1,11 +1,7 @@
 window.onload = function () {
-    if (localStorage.getItem('token')) {
-        let create_ride_form = document.getElementById('create_ride_form');
-        create_ride_form.onsubmit = createOffer;
-    }
-    else window.location.href = "../ui/login.html"
-};
-
+    let create_ride_form = document.getElementById('create_ride_form');
+    create_ride_form.onsubmit = createOffer;
+}
 function createOffer() {
 
     let date = document.getElementById("date").value;
@@ -24,19 +20,15 @@ function createOffer() {
 
         };
 
-    let url = "https://ride-my-way-api-database.herokuapp.com/rides/create";
-    let method = 'post';
-    let header = {
-        'Content-Type': 'application/json',
-        'token': localStorage.getItem('token')
-    };
-    console.log(newRide);
+    let url = "http://127.0.0.1:5000/rides/create";
 
-    fetchAPI(url, method, header, newRide)
+    fetchAPI(url, newRide)
         .then(results => {
+            console.log(results.status)
+
                 if (results.status === 201) {
                     window.location.href = '../ui/driver-offers.html';
-                    alert("Ride created successfully");
+                    window.alert("Ride created successfully");
                 }
             }
         ).catch(function (error) {
