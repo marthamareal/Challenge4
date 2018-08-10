@@ -1,11 +1,7 @@
 window.onload = function () {
-
 let parsedUrl = new URL(window.location.href);
 let rideId = parsedUrl.searchParams.get('ride');
 viewOffer(rideId)
-
-// fetch the ride details
-// update the dom
 };
 
 function viewOffer(offerId) {
@@ -130,9 +126,8 @@ function viewOffer(offerId) {
                     // a.setAttribute("href", "../ui/user-profile.html");
                     let button1 = document.createElement('button');
                     button1.setAttribute("id", "accept");
-                    button1.setAttribute("value", offerId);
-                    button1.onclick = function (rideId = this.value) {
-                        requestRide(rideId)
+                    button1.onclick = function () {
+                        requestRide(offerId)
                     };
                     button1.innerText = "Request to Join";
                     a.appendChild(button1);
@@ -165,8 +160,7 @@ function viewOffer(offerId) {
 function requestRide(offerId) {
         if (localStorage.getItem('token')) {
             let url = "http://127.0.0.1:5000/rides/requests/create/" + offerId;
-            console.log(url);
-            let method = 'get';
+            let method = 'post';
             let header = {
                 'Content-Type': 'application/json',
                 'token': localStorage.getItem('token')
@@ -177,7 +171,7 @@ function requestRide(offerId) {
                     if (!results) return;
 
                     if (results.status === 201) {
-                     window.location.href = "../ui/user-profile.html";
+                     window.location.href = "../ui/available-offers.html?ride=" + offerId;
                     alert("Request made successfully");
                 }
 
