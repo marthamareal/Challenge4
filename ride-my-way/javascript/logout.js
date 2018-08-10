@@ -5,7 +5,7 @@ if (localStorage.getItem('token')) {
 }
 
 function logoutUser() {
-    let url = "http://127.0.0.1:5000/auth/logout";
+    let url = "https://ride-my-way-api-database.herokuapp.com/auth/logout";
     let headers = {'Content-Type': 'application/json', 'token': localStorage.getItem('token')};
     let method = 'get';
 

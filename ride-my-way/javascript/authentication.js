@@ -29,9 +29,7 @@ function createUser(event) {
         "phone_no": phone,
         "password": password
     };
-    // let url = "https://ride-my-way-api-database.herokuapp.com/auth/signup";
-
-    let url = "http://127.0.0.1:5000/auth/signup";
+    let url = "https://ride-my-way-api-database.herokuapp.com/auth/signup";
     let method = 'post';
     let header = {'Content-Type': 'application/json'};
 
@@ -52,8 +50,7 @@ function createUser(event) {
 function loginUser(event) {
 
     event.preventDefault();
-    // let url = "https://ride-my-way-api-database.herokuapp.com/auth/login";
-    let url = "http://127.0.0.1:5000/auth/login";
+    let url = "https://ride-my-way-api-database.herokuapp.com/auth/login";
 
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;

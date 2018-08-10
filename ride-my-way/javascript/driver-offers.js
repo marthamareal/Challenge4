@@ -7,7 +7,7 @@ if (document.getElementById('driver_offers')) getDriverOffers();
 function getDriverOffers() {
 
     if (localStorage.getItem('token')) {
-        let url = "http://127.0.0.1:5000/driver/rides";
+        let url = "https://ride-my-way-api-database.herokuapp.com/driver/rides";
         let method = 'get';
         let header = {
             'Content-Type': 'application/json',

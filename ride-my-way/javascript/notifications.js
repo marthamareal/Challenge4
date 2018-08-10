@@ -1,7 +1,7 @@
 function getNotifications() {
 
     if (localStorage.getItem('token')) {
-        let url = "http://127.0.0.1:5000/notifications";
+        let url = "https://ride-my-way-api-database.herokuapp.com/notifications";
         let method = 'get';
         let header = {
             'Content-Type': 'application/json',
