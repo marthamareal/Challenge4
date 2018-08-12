@@ -2,13 +2,8 @@ function getNotifications() {
 
     if (localStorage.getItem('token')) {
         let url = "https://ride-my-way-api-database.herokuapp.com/notifications";
-        let method = 'get';
-        let header = {
-            'Content-Type': 'application/json',
-            'token': localStorage.getItem('token')
-        };
 
-        fetchAPI(url, method, header)
+        fetchAPI(url,'get')
             .then(results => {
                 if (!results) return;
 

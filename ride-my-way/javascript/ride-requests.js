@@ -1,24 +1,19 @@
 window.onload = function () {
+    
 let parsedUrl = new URL(window.location.href);
 let rideId = parsedUrl.searchParams.get('ride');
  getRideRequests(rideId)
 
 };
 function getRideRequests(rideId) {
-        let url = "https://ride-my-way-api-database.herokuapp.com/rides/requests/" + rideId;
-        let method = 'get';
-        let header = {
-            'Content-Type': 'application/json',
-            'token': localStorage.getItem('token')
-        };
+    if(localStorage.getItem('token')){
+        let url = " https://ride-my-way-api-database.herokuapp.com/rides/requests/" + rideId;
 
-        fetchAPI(url, method, header)
+        fetchAPI(url,'get')
             .then(results => {
                 if (!results) return;
 
                 //    create table from results and append to DOM
-
-                console.log(results);
 
                 let div = document.querySelector('#ride_requests');
 
@@ -67,23 +62,19 @@ function getRideRequests(rideId) {
                     let action = document.createElement('td');
                     let button1 = document.createElement('button');
                     button1.setAttribute("id", "accept");
-                    button1.setAttribute("value", wantedFields[wantedFields.length - 1]);
-                    button1.setAttribute("action", "Y");
                     button1.innerText = "Accept";
-                    button1.onclick = function(requestId=this.id, approval=this.action){
-                        approveRequest(requestId,approval)
+                    button1.onclick = function(){
+                        approveRequest(rideId,wantedFields[wantedFields.length - 1], "Y")
                     };
                     action.appendChild(button1);
 
 
                     let button2 = document.createElement('button');
                     button2.setAttribute("id", "reject");
-                    button2.setAttribute("value",  wantedFields[wantedFields.length - 1]);
-                    button2.setAttribute("action", "N");
-                    button2.onclick = function(requestId=this.value, approval=this.action){
-                        approveRequest(requestId,approval)
-                    };
                     button2.innerText = "Reject";
+                    button2.onclick = function(){
+                        approveRequest(rideId,wantedFields[wantedFields.length - 1], "N")
+                    };
                     action.appendChild(button2);
 
                     row.appendChild(action);
@@ -97,26 +88,22 @@ function getRideRequests(rideId) {
             }).catch(function (error) {
             console.log(error)
         })
+    }else{
+            window.location.href = "../ui/login.html"
+        }
 
 }
 
-function approveRequest(requestId,approval) {
+function approveRequest(rideId,requestId,approval) {
 
     let url = "https://ride-my-way-api-database.herokuapp.com/rides/requests/approve/" + requestId;
-    console.log(requestId);
-    console.log(approval);
-        let method = 'post';
-        let header = {
-            'Content-Type': 'application/json',
-            'token': localStorage.getItem('token')
-        };
 
-        fetchAPI(url, method, header, {"approval": approval})
+        fetchAPI(url,'post',{"approval": approval})
             .then(results => {
             if(!results) return;
             if (results.status === 201) {
-            console.log("Reached fun");
-
+                alert("Request approved successfully ");
+                window.location.href = "../ui/request-list.html?=" + rideId;
         }
             })
 

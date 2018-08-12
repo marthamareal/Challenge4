@@ -1,18 +1,13 @@
 
 window.onload = function () {
-    if (document.getElementById('ride_offers')) getOffers();
+        if (document.getElementById('ride_offers')) getOffers();
 };
 
 function getOffers() {
+        let url = " https://ride-my-way-api-database.herokuapp.com/rides";
+        if(localStorage.getItem('token')){
 
-    if (localStorage.getItem('token')) {
-        let url = "https://ride-my-way-api-database.herokuapp.com/rides";
-        let method = 'get';
-        let header = {
-            'Content-Type': 'application/json',
-            'token': localStorage.getItem('token')
-        };
-        fetchAPI(url, method, header)
+        fetchAPI(url,'get')
             .then(results => {
                 if (!results) return;
 
@@ -61,9 +56,8 @@ function getOffers() {
             }).catch(function (error) {
             console.log(error)
         })
-    }
-
-    else
+    } else {
         window.location.href = "../ui/login.html"
-
+    }
+    
 }
