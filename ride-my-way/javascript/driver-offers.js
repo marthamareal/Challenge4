@@ -5,15 +5,9 @@ if (document.getElementById('driver_offers')) getDriverOffers();
 
 };
 function getDriverOffers() {
-
-    if (localStorage.getItem('token')) {
         let url = "https://ride-my-way-api-database.herokuapp.com/driver/rides";
-        let method = 'get';
-        let header = {
-            'Content-Type': 'application/json',
-            'token': localStorage.getItem('token')
-        };
-        fetchAPI(url, method, header)
+        if(localStorage.getItem('token')){
+        fetchAPI(url,'get')
             .then(results => {
                 if (!results) return;
 
@@ -63,4 +57,8 @@ function getDriverOffers() {
             console.log(error)
         })
     }
+    else {
+        window.location.href = "../ui/login.html"
+    }
 }
+    

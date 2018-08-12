@@ -1,20 +1,17 @@
 window.onload = function () {
+    alert("Page loading")
 let parsedUrl = new URL(window.location.href);
 let rideId = parsedUrl.searchParams.get('ride');
 viewOffer(rideId)
+    
 };
 
 function viewOffer(offerId) {
         if (localStorage.getItem('token')) {
-            let url = "http://127.0.0.1:5000/rides/" + offerId;
+            let url = " https://ride-my-way-api-database.herokuapp.com/rides/" + offerId;
             console.log(url);
-            let method = 'get';
-            let header = {
-                'Content-Type': 'application/json',
-                'token': localStorage.getItem('token')
-            };
 
-            fetchAPI(url, method, header)
+            fetchAPI(url,'get')
                 .then(results => {
                     if (!results) return;
 
@@ -154,24 +151,24 @@ function viewOffer(offerId) {
             });
 
         }
+
+    else{
+            window.location.href = "../ui/login.html"
+        }
 }
+
 
 
 function requestRide(offerId) {
         if (localStorage.getItem('token')) {
-            let url = "http://127.0.0.1:5000/rides/requests/create/" + offerId;
-            let method = 'post';
-            let header = {
-                'Content-Type': 'application/json',
-                'token': localStorage.getItem('token')
-            };
+            let url = " https://ride-my-way-api-database.herokuapp.com/rides/requests/create/" + offerId;
 
-            fetchAPI(url, method, header)
+            fetchAPI(url,'post')
                 .then(results => {
                     if (!results) return;
 
                     if (results.status === 201) {
-                     window.location.href = "../ui/available-offers.html?ride=" + offerId;
+                     window.location.href = "../ui/ride-offer-list.html";
                     alert("Request made successfully");
                 }
 

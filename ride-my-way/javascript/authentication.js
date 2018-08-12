@@ -1,57 +1,15 @@
-
 window.onload = function () {
-
-    let signupForm = document.getElementById('signup_form');
     let loginForm = document.getElementById('login_form');
-
-    if(signupForm)
-        signupForm.onsubmit = createUser;
     if(loginForm)
         loginForm.onsubmit = loginUser;
-};
-
-
-function createUser(event) {
-    event.preventDefault();
-
-    let fname = document.getElementById("fname").value;
-    let lname = document.getElementById("lname").value;
-    let email = document.getElementById("email").value;
-    let phone = document.getElementById("phone").value;
-    let city = document.getElementById("city").value;
-    let password = document.getElementById("password").value;
-
-    let newUser = {
-        "first name": fname,
-        "last name": lname,
-        "email": email,
-        "city": city,
-        "phone_no": phone,
-        "password": password
-    };
-    let url = "https://ride-my-way-api-database.herokuapp.com/auth/signup";
-    let method = 'post';
-    let header = {'Content-Type': 'application/json'};
-
-    fetchAPI(url, method,header, newUser)
-        .then(results => {
-
-            if (results.status === 201) {
-                    window.location.href = '../ui/login.html';
-                    alert("Account created successfully login with your details")
-                }
-        }
-    ).catch(function(error){
-        console.log(error)
-    })
+        
 
 }
 
 function loginUser(event) {
-
-    event.preventDefault();
+    event.preventDefault()
+    onloading(true)
     let url = "https://ride-my-way-api-database.herokuapp.com/auth/login";
-
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
 
@@ -60,14 +18,13 @@ function loginUser(event) {
         "password": password
     };
 
-    let headers = {'Content-Type': 'application/json'};
-    let method = 'post';
-
-    fetchAPI(url, method, headers, logins)
-        .then(results => {
+    fetchAPI(url,'post',logins)
+    .then(results => {
             if(!results) return;
             if (results.status === 200 && results.data.token) {
             localStorage.setItem('token', results.data.token);
+            console.log(localStorage.getItem('token'))
+            onloading(false)
             window.location.href = "../ui/user-profile.html"
         }
 

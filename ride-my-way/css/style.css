@@ -10,6 +10,14 @@ h1{
     margin-left: 50px;
 
 }
+#loading{
+    display: none;
+    margin-left: 180px;
+    color: red;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
 .index-content{
     display: flex;
     height: 74%;

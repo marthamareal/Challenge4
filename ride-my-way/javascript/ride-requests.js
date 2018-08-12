@@ -1,24 +1,19 @@
 window.onload = function () {
+    
 let parsedUrl = new URL(window.location.href);
 let rideId = parsedUrl.searchParams.get('ride');
  getRideRequests(rideId)
 
 };
 function getRideRequests(rideId) {
-        let url = " http://127.0.0.1:5000/rides/requests/" + rideId;
-        let method = 'get';
-        let header = {
-            'Content-Type': 'application/json',
-            'token': localStorage.getItem('token')
-        };
+    if(localStorage.getItem('token')){
+        let url = " https://ride-my-way-api-database.herokuapp.com/rides/requests/" + rideId;
 
-        fetchAPI(url, method, header)
+        fetchAPI(url,'get')
             .then(results => {
                 if (!results) return;
 
                 //    create table from results and append to DOM
-
-                console.log(results);
 
                 let div = document.querySelector('#ride_requests');
 
@@ -93,19 +88,17 @@ function getRideRequests(rideId) {
             }).catch(function (error) {
             console.log(error)
         })
+    }else{
+            window.location.href = "../ui/login.html"
+        }
 
 }
 
 function approveRequest(rideId,requestId,approval) {
 
-    let url = " http://127.0.0.1:5000/rides/requests/approve/" + requestId;
-        let method = 'post';
-        let header = {
-            'Content-Type': 'application/json',
-            'token': localStorage.getItem('token')
-        };
+    let url = "https://ride-my-way-api-database.herokuapp.com/rides/requests/approve/" + requestId;
 
-        fetchAPI(url, method, header, {"approval": approval})
+        fetchAPI(url,'post',{"approval": approval})
             .then(results => {
             if(!results) return;
             if (results.status === 201) {
